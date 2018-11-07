@@ -1,8 +1,8 @@
 package model;
 
 public class CompStmt implements IStmt {
-    IStmt first;
-    IStmt snd;
+    private IStmt first;
+    private IStmt snd;
 
     public CompStmt(IStmt first, IStmt snd) {
         this.first = first;

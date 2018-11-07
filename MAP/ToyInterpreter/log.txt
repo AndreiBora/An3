@@ -1,0 +1,178 @@
+
+ExeStack: 
+open(test.in)
+ReadFileStmt(var_f, var_c) ; print(var_c) ; if (var_c) then ReadFileStmt(var_f, var_c) ; print(var_c) else print(0) end  ; model.CloseRFileStmt@4554617c
+
+SymTable: 
+
+Out: 
+
+FileTable: 
+
+------------------
+
+ExeStack: 
+ReadFileStmt(var_f, var_c) ; print(var_c) ; if (var_c) then ReadFileStmt(var_f, var_c) ; print(var_c) else print(0) end  ; model.CloseRFileStmt@4554617c
+
+SymTable: 
+var_f -> 1
+
+Out: 
+
+FileTable: 
+1 -> test.in=java.io.BufferedReader@6d6f6e28
+
+------------------
+
+ExeStack: 
+ReadFileStmt(var_f, var_c)
+print(var_c) ; if (var_c) then ReadFileStmt(var_f, var_c) ; print(var_c) else print(0) end  ; model.CloseRFileStmt@4554617c
+
+SymTable: 
+var_f -> 1
+
+Out: 
+
+FileTable: 
+1 -> test.in=java.io.BufferedReader@6d6f6e28
+
+------------------
+
+ExeStack: 
+print(var_c) ; if (var_c) then ReadFileStmt(var_f, var_c) ; print(var_c) else print(0) end  ; model.CloseRFileStmt@4554617c
+
+SymTable: 
+var_f -> 1
+var_c -> 15
+
+Out: 
+
+FileTable: 
+1 -> test.in=java.io.BufferedReader@6d6f6e28
+
+------------------
+
+ExeStack: 
+print(var_c)
+if (var_c) then ReadFileStmt(var_f, var_c) ; print(var_c) else print(0) end  ; model.CloseRFileStmt@4554617c
+
+SymTable: 
+var_f -> 1
+var_c -> 15
+
+Out: 
+
+FileTable: 
+1 -> test.in=java.io.BufferedReader@6d6f6e28
+
+------------------
+
+ExeStack: 
+if (var_c) then ReadFileStmt(var_f, var_c) ; print(var_c) else print(0) end  ; model.CloseRFileStmt@4554617c
+
+SymTable: 
+var_f -> 1
+var_c -> 15
+
+Out: 
+15
+
+FileTable: 
+1 -> test.in=java.io.BufferedReader@6d6f6e28
+
+------------------
+
+ExeStack: 
+if (var_c) then ReadFileStmt(var_f, var_c) ; print(var_c) else print(0) end 
+model.CloseRFileStmt@4554617c
+
+SymTable: 
+var_f -> 1
+var_c -> 15
+
+Out: 
+15
+
+FileTable: 
+1 -> test.in=java.io.BufferedReader@6d6f6e28
+
+------------------
+
+ExeStack: 
+ReadFileStmt(var_f, var_c) ; print(var_c)
+model.CloseRFileStmt@4554617c
+
+SymTable: 
+var_f -> 1
+var_c -> 15
+
+Out: 
+15
+
+FileTable: 
+1 -> test.in=java.io.BufferedReader@6d6f6e28
+
+------------------
+
+ExeStack: 
+ReadFileStmt(var_f, var_c)
+print(var_c)
+model.CloseRFileStmt@4554617c
+
+SymTable: 
+var_f -> 1
+var_c -> 15
+
+Out: 
+15
+
+FileTable: 
+1 -> test.in=java.io.BufferedReader@6d6f6e28
+
+------------------
+
+ExeStack: 
+print(var_c)
+model.CloseRFileStmt@4554617c
+
+SymTable: 
+var_f -> 1
+var_c -> 50
+
+Out: 
+15
+
+FileTable: 
+1 -> test.in=java.io.BufferedReader@6d6f6e28
+
+------------------
+
+ExeStack: 
+model.CloseRFileStmt@4554617c
+
+SymTable: 
+var_f -> 1
+var_c -> 50
+
+Out: 
+15
+50
+
+FileTable: 
+1 -> test.in=java.io.BufferedReader@6d6f6e28
+
+------------------
+
+ExeStack: 
+
+SymTable: 
+var_f -> 1
+var_c -> 50
+
+Out: 
+15
+50
+
+FileTable: 
+
+------------------

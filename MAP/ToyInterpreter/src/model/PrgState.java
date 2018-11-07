@@ -1,28 +1,41 @@
 package model;
 
 import exception.MyStmtExecException;
+import javafx.util.Pair;
 
+import java.io.BufferedReader;
 import java.util.EmptyStackException;
 
 public class PrgState {
-    MyIStack<IStmt> exeStack;
-    MyIDictionary<String,Integer> symTable;
-    MyIList<Integer> out;
+    private MyIStack<IStmt> exeStack;
+    private MyIDictionary<String, Integer> symTable;
+    private MyIList<Integer> out;
+    private MyIDictionary<Integer, Pair<String, BufferedReader>> fileTable;
 
-    public PrgState(MyIStack<IStmt> exeStack, MyIDictionary<String, Integer> symTable, MyIList<Integer> out) {
+
+    public PrgState(MyIStack<IStmt> exeStack, MyIDictionary<String, Integer> symTable, MyIList<Integer> out, MyIDictionary<Integer, Pair<String, BufferedReader>> fileTable) {
         this.exeStack = exeStack;
         this.symTable = symTable;
         this.out = out;
+        this.fileTable = fileTable;
     }
 
-    public PrgState oneStep(){
+    public PrgState oneStep() {
         IStmt stmt;
-        try{
+        try {
             stmt = this.exeStack.pop();
-        }catch (EmptyStackException e){
+        } catch (EmptyStackException e) {
             throw new MyStmtExecException("No more statements to execute");
         }
         return stmt.execute(this);
+    }
+
+    public MyIDictionary<Integer, Pair<String, BufferedReader>> getFileTable() {
+        return fileTable;
+    }
+
+    public void setFileTable(MyIDictionary<Integer, Pair<String, BufferedReader>> fileTable) {
+        this.fileTable = fileTable;
     }
 
     public MyIStack<IStmt> getExeStack() {
@@ -50,11 +63,11 @@ public class PrgState {
     }
 
     @Override
-    public String toString()
-    {
-        return  "\nExeStack:" + exeStack.toString() +
-                "\nSymTable:"+ symTable.toString() +
-                "\nOut:"+ out.toString() +
+    public String toString() {
+        return "\nExeStack: " + exeStack.toString() +
+                "\nSymTable: " + symTable.toString() +
+                "\nOut: " + out.toString() +
+                "\nFileTable: " + fileTable.toString()+
                 "\n------------------\n";
     }
 }

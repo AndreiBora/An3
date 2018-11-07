@@ -1,14 +1,16 @@
 import controller.Controller;
+import javafx.util.Pair;
 import model.*;
 import repository.IRepository;
 import repository.Repository;
-import view.View;
+
+import java.io.BufferedReader;
 
 public class Main {
 
     public static void main(String[] args) {
-//        MyIDictionary<String,Integer> symTable = new MyDictionary<>();
-//        MyIList<Integer> out = new MyList<>();
+        MyIDictionary<String,Integer> symTable = new MyDictionary<>();
+        MyIList<Integer> out = new MyList<>();
 //        MyIStack<IStmt> exeStack1 = new MyStack<>();
 
 
@@ -58,8 +60,42 @@ public class Main {
 //        Controller ctrl3 = new Controller(repo3);
 //        ctrl3.allStep(true);
 
-        View view = new View();
-        view.run();
+        /*
+        *   Lab5Ex1
+        *   openRFile (var_f, "test.in");
+        *   readFile (var_f, var_c); print (var_c);
+        *   If var_c then readFile (var_f, var_c); print (var_c) else print (0);
+        *   closeRFile (var_f)
+        */
+        MyIStack<IStmt> exeStack4 = new MyStack<>();
+
+        IStmt as3ex1 = new CompStmt(
+                new OpenRFileStmt("var_f", "test.in"),
+                new CompStmt(
+                        new ReadFileStmt(new VarExp("var_f"), "var_c"),
+                        new CompStmt(
+                                new PrintStmt(new VarExp("var_c")),
+                                new CompStmt(
+                                        new IfStmt(
+                                                new VarExp("var_c"),
+                                                new CompStmt(
+                                                    new ReadFileStmt(new VarExp("var_f"), "var_c"),
+                                                    new PrintStmt(new VarExp("var_c"))
+                                                ),
+                                                new PrintStmt(new ConstExp(0))
+                                        ),
+                                        new CloseRFileStmt(new VarExp("var_f"))
+                                )
+                        )
+                )
+        );
+        exeStack4.push(as3ex1);
+        MyIDictionary<Integer, Pair<String, BufferedReader>> fileTable = new MyDictionary<>();
+        PrgState prgState4 = new PrgState(exeStack4,symTable,out,fileTable);
+        IRepository repo4 = new Repository(prgState4,"log.txt");
+        Controller ctrl4 = new Controller(repo4);
+        ctrl4.allStep(true);
+
     }
 
 }

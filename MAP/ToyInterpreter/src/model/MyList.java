@@ -8,7 +8,7 @@ public class MyList<T> implements MyIList<T> {
     private List<T> list;
 
     public MyList() {
-        this.list = new ArrayList<T>();
+        this.list = new ArrayList<>();
     }
 
     @Override
@@ -23,10 +23,10 @@ public class MyList<T> implements MyIList<T> {
 
     @Override
     public String toString() {
-        String istRepr = "";
+        StringBuilder istRepr = new StringBuilder("\n");
         for(T stm:list){
-            istRepr += stm.toString() + "\n";
+            istRepr.append(stm.toString()).append("\n");
         }
-        return istRepr;
+        return istRepr.toString();
     }
 }

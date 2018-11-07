@@ -5,7 +5,7 @@ import exception.DivisionByZeroException;
 public class ArithExp extends Exp{
     private Exp e1;
     private Exp e2;
-    char op;
+    private char op;
 
     public ArithExp( char op,Exp exp1, Exp exp2) {
         this.e1 = exp1;

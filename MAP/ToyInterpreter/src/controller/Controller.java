@@ -1,7 +1,6 @@
 package controller;
 
 import exception.MyStmtExecException;
-import model.IStmt;
 import model.PrgState;
 import repository.IRepository;
 
@@ -12,29 +11,26 @@ public class Controller {
         this.repository = repository;
     }
 
-    public PrgState oneStep(){
+    public PrgState oneStep() {
         PrgState state = this.repository.getCurrentState().oneStep();
         displayState(state);
         return state;
     }
 
 
-
-    public void allStep(Boolean flag){
+    public void allStep(Boolean flag) {
         PrgState prgState = this.repository.getCurrentState();
-        try{
-            while (true){
-                if(flag){
-                    displayState(prgState);
-                }
-                prgState.oneStep();
+
+        while (!prgState.getExeStack().isEmpty()) {
+            prgState.oneStep();
+            if (flag) {
+                repository.logPrgStateExec();
+                displayState(prgState);
             }
-        }catch (MyStmtExecException e){
-            //Program finish execution
         }
     }
 
-    public static void displayState(PrgState prgState){
+    private static void displayState(PrgState prgState) {
         System.out.println(prgState.toString());
     }
 }

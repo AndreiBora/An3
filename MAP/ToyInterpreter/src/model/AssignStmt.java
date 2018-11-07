@@ -1,8 +1,8 @@
 package model;
 
 public class AssignStmt implements IStmt {
-    String id;
-    Exp exp;
+    private String id;
+    private Exp exp;
 
     public AssignStmt(String id, Exp exp) {
         this.id = id;

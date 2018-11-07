@@ -1,9 +1,9 @@
 package model;
 
 public class IfStmt implements IStmt{
-    Exp exp;
-    IStmt thenS;
-    IStmt elseS;
+    private Exp exp;
+    private IStmt thenS;
+    private IStmt elseS;
 
     public IfStmt(Exp exp, IStmt thenS, IStmt elseS) {
         this.exp = exp;
@@ -13,7 +13,7 @@ public class IfStmt implements IStmt{
 
     @Override
     public String toString() {
-        return "if (" + exp.toString() + ") then" + thenS.toString() + " else " + elseS.toString() + " end ";
+        return "if (" + exp.toString() + ") then " + thenS.toString() + " else " + elseS.toString() + " end ";
     }
 
     @Override
