@@ -25,7 +25,6 @@ public class Controller {
             prgState.oneStep();
             if (flag) {
                 repository.logPrgStateExec();
-                displayState(prgState);
             }
         }
     }

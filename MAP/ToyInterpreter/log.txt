@@ -1,7 +1,7 @@
 
 ExeStack: 
 open(test.in)
-ReadFileStmt(var_f, var_c) ; print(var_c) ; if (var_c) then ReadFileStmt(var_f, var_c) ; print(var_c) else print(0) end  ; model.CloseRFileStmt@4554617c
+ReadFileStmt(var_f, var_c) ; print(var_c) ; if (var_c) then ReadFileStmt(var_f, var_c) ; print(var_c) else print(0) end  ; CloseRFileStmt(var_f)
 
 SymTable: 
 
@@ -12,7 +12,7 @@ FileTable:
 ------------------
 
 ExeStack: 
-ReadFileStmt(var_f, var_c) ; print(var_c) ; if (var_c) then ReadFileStmt(var_f, var_c) ; print(var_c) else print(0) end  ; model.CloseRFileStmt@4554617c
+ReadFileStmt(var_f, var_c) ; print(var_c) ; if (var_c) then ReadFileStmt(var_f, var_c) ; print(var_c) else print(0) end  ; CloseRFileStmt(var_f)
 
 SymTable: 
 var_f -> 1
@@ -20,13 +20,13 @@ var_f -> 1
 Out: 
 
 FileTable: 
-1 -> test.in=java.io.BufferedReader@6d6f6e28
+1 -> test.in=java.io.BufferedReader@7ea987ac
 
 ------------------
 
 ExeStack: 
 ReadFileStmt(var_f, var_c)
-print(var_c) ; if (var_c) then ReadFileStmt(var_f, var_c) ; print(var_c) else print(0) end  ; model.CloseRFileStmt@4554617c
+print(var_c) ; if (var_c) then ReadFileStmt(var_f, var_c) ; print(var_c) else print(0) end  ; CloseRFileStmt(var_f)
 
 SymTable: 
 var_f -> 1
@@ -34,12 +34,12 @@ var_f -> 1
 Out: 
 
 FileTable: 
-1 -> test.in=java.io.BufferedReader@6d6f6e28
+1 -> test.in=java.io.BufferedReader@7ea987ac
 
 ------------------
 
 ExeStack: 
-print(var_c) ; if (var_c) then ReadFileStmt(var_f, var_c) ; print(var_c) else print(0) end  ; model.CloseRFileStmt@4554617c
+print(var_c) ; if (var_c) then ReadFileStmt(var_f, var_c) ; print(var_c) else print(0) end  ; CloseRFileStmt(var_f)
 
 SymTable: 
 var_f -> 1
@@ -48,13 +48,13 @@ var_c -> 15
 Out: 
 
 FileTable: 
-1 -> test.in=java.io.BufferedReader@6d6f6e28
+1 -> test.in=java.io.BufferedReader@7ea987ac
 
 ------------------
 
 ExeStack: 
 print(var_c)
-if (var_c) then ReadFileStmt(var_f, var_c) ; print(var_c) else print(0) end  ; model.CloseRFileStmt@4554617c
+if (var_c) then ReadFileStmt(var_f, var_c) ; print(var_c) else print(0) end  ; CloseRFileStmt(var_f)
 
 SymTable: 
 var_f -> 1
@@ -63,12 +63,12 @@ var_c -> 15
 Out: 
 
 FileTable: 
-1 -> test.in=java.io.BufferedReader@6d6f6e28
+1 -> test.in=java.io.BufferedReader@7ea987ac
 
 ------------------
 
 ExeStack: 
-if (var_c) then ReadFileStmt(var_f, var_c) ; print(var_c) else print(0) end  ; model.CloseRFileStmt@4554617c
+if (var_c) then ReadFileStmt(var_f, var_c) ; print(var_c) else print(0) end  ; CloseRFileStmt(var_f)
 
 SymTable: 
 var_f -> 1
@@ -78,13 +78,13 @@ Out:
 15
 
 FileTable: 
-1 -> test.in=java.io.BufferedReader@6d6f6e28
+1 -> test.in=java.io.BufferedReader@7ea987ac
 
 ------------------
 
 ExeStack: 
 if (var_c) then ReadFileStmt(var_f, var_c) ; print(var_c) else print(0) end 
-model.CloseRFileStmt@4554617c
+CloseRFileStmt(var_f)
 
 SymTable: 
 var_f -> 1
@@ -94,13 +94,13 @@ Out:
 15
 
 FileTable: 
-1 -> test.in=java.io.BufferedReader@6d6f6e28
+1 -> test.in=java.io.BufferedReader@7ea987ac
 
 ------------------
 
 ExeStack: 
 ReadFileStmt(var_f, var_c) ; print(var_c)
-model.CloseRFileStmt@4554617c
+CloseRFileStmt(var_f)
 
 SymTable: 
 var_f -> 1
@@ -110,14 +110,14 @@ Out:
 15
 
 FileTable: 
-1 -> test.in=java.io.BufferedReader@6d6f6e28
+1 -> test.in=java.io.BufferedReader@7ea987ac
 
 ------------------
 
 ExeStack: 
 ReadFileStmt(var_f, var_c)
 print(var_c)
-model.CloseRFileStmt@4554617c
+CloseRFileStmt(var_f)
 
 SymTable: 
 var_f -> 1
@@ -127,13 +127,13 @@ Out:
 15
 
 FileTable: 
-1 -> test.in=java.io.BufferedReader@6d6f6e28
+1 -> test.in=java.io.BufferedReader@7ea987ac
 
 ------------------
 
 ExeStack: 
 print(var_c)
-model.CloseRFileStmt@4554617c
+CloseRFileStmt(var_f)
 
 SymTable: 
 var_f -> 1
@@ -143,12 +143,12 @@ Out:
 15
 
 FileTable: 
-1 -> test.in=java.io.BufferedReader@6d6f6e28
+1 -> test.in=java.io.BufferedReader@7ea987ac
 
 ------------------
 
 ExeStack: 
-model.CloseRFileStmt@4554617c
+CloseRFileStmt(var_f)
 
 SymTable: 
 var_f -> 1
@@ -159,7 +159,7 @@ Out:
 50
 
 FileTable: 
-1 -> test.in=java.io.BufferedReader@6d6f6e28
+1 -> test.in=java.io.BufferedReader@7ea987ac
 
 ------------------
 

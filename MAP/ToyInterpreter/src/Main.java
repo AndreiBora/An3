@@ -3,6 +3,9 @@ import javafx.util.Pair;
 import model.*;
 import repository.IRepository;
 import repository.Repository;
+import view.ExitCommand;
+import view.RunExample;
+import view.TextMenu;
 
 import java.io.BufferedReader;
 
@@ -11,55 +14,60 @@ public class Main {
     public static void main(String[] args) {
         MyIDictionary<String,Integer> symTable = new MyDictionary<>();
         MyIList<Integer> out = new MyList<>();
-//        MyIStack<IStmt> exeStack1 = new MyStack<>();
-
+        MyIStack<IStmt> exeStack1 = new MyStack<>();
+        MyIDictionary<Integer, Pair<String, BufferedReader>> fileTable = new MyDictionary<>();
 
         // v=2;Print(v)
-        /*
+
         IStmt st1 = new CompStmt(new AssignStmt("v",new ConstExp(2)),new PrintStmt(new VarExp("v")));
         exeStack1.push(st1);
 
-        PrgState prgState = new PrgState(exeStack1,symTable,out);
-        IRepository repo = new Repository(prgState);
+        PrgState prgState = new PrgState(exeStack1,symTable,out,fileTable);
+        IRepository repo = new Repository(prgState,"log.txt");
         Controller ctrl = new Controller(repo);
-        ctrl.allStep(true);
-        */
+
+        //-----------------------------------------------------------------
         //a=2+3*5;b=a+1;Print(b)
-        /*
-        IStmt ex2 = new CompStmt(
+
+        IStmt st2 = new CompStmt(
                 new AssignStmt("a", new ArithExp('+',new ConstExp(2),new ArithExp('*',new ConstExp(3), new ConstExp(5)))),
                 new CompStmt(
                         new AssignStmt("b",new ArithExp('+',new VarExp("a"), new ConstExp(1))),
                         new PrintStmt(new VarExp("b"))
                 )
         );
-
+        MyIDictionary<String,Integer> symTable2 = new MyDictionary<>();
+        MyIList<Integer> out2 = new MyList<>();
         MyIStack<IStmt> exeStack2 = new MyStack<>();
-        exeStack2.push(ex2);
-        PrgState prgState2 = new PrgState(exeStack2,symTable,out);
-        IRepository repo2 = new Repository(prgState2);
+        MyIDictionary<Integer, Pair<String, BufferedReader>> fileTable2 = new MyDictionary<>();
+
+        exeStack2.push(st2);
+        PrgState prgState2 = new PrgState(exeStack2,symTable2,out2,fileTable2);
+        IRepository repo2 = new Repository(prgState2,"log.txt");
         Controller ctrl2 = new Controller(repo2);
-        ctrl2.allStep(true);
-        */
 
+        //-----------------------------------------------------------------
         //a=2-2;(If a Then v=2 Else v=3); Print(v)
-//        IStmt ex3 = new CompStmt(
-//                new AssignStmt("a", new ArithExp('-',new ConstExp(2), new ConstExp(2))),
-//                new CompStmt(
-//                        new IfStmt(new VarExp("a"),
-//                                new AssignStmt("v",new ConstExp(2)),
-//                                new AssignStmt("v", new ConstExp(3))),
-//                        new PrintStmt(new VarExp("v"))
-//                )
-//        );
-//
-//        MyIStack<IStmt> exeStack3 = new MyStack<>();
-//        exeStack3.push(ex3);
-//        PrgState prgState3 = new PrgState(exeStack3,symTable,out);
-//        IRepository repo3 = new Repository(prgState3);
-//        Controller ctrl3 = new Controller(repo3);
-//        ctrl3.allStep(true);
+        IStmt st3 = new CompStmt(
+                new AssignStmt("a", new ArithExp('-',new ConstExp(2), new ConstExp(2))),
+                new CompStmt(
+                        new IfStmt(new VarExp("a"),
+                                new AssignStmt("v",new ConstExp(2)),
+                                new AssignStmt("v", new ConstExp(3))),
+                        new PrintStmt(new VarExp("v"))
+                )
+        );
+        MyIDictionary<String,Integer> symTable3 = new MyDictionary<>();
+        MyIList<Integer> out3 = new MyList<>();
+        MyIStack<IStmt> exeStack3 = new MyStack<>();
+        MyIDictionary<Integer, Pair<String, BufferedReader>> fileTable3 = new MyDictionary<>();
 
+        exeStack3.push(st3);
+        PrgState prgState3 = new PrgState(exeStack3,symTable3,out3,fileTable3);
+        IRepository repo3 = new Repository(prgState3,"log.txt");
+        Controller ctrl3 = new Controller(repo3);
+
+        //-----------------------------------------------------------------
         /*
         *   Lab5Ex1
         *   openRFile (var_f, "test.in");
@@ -67,9 +75,8 @@ public class Main {
         *   If var_c then readFile (var_f, var_c); print (var_c) else print (0);
         *   closeRFile (var_f)
         */
-        MyIStack<IStmt> exeStack4 = new MyStack<>();
 
-        IStmt as3ex1 = new CompStmt(
+        IStmt st4 = new CompStmt(
                 new OpenRFileStmt("var_f", "test.in"),
                 new CompStmt(
                         new ReadFileStmt(new VarExp("var_f"), "var_c"),
@@ -89,13 +96,22 @@ public class Main {
                         )
                 )
         );
-        exeStack4.push(as3ex1);
-        MyIDictionary<Integer, Pair<String, BufferedReader>> fileTable = new MyDictionary<>();
-        PrgState prgState4 = new PrgState(exeStack4,symTable,out,fileTable);
+        MyIDictionary<String,Integer> symTable4 = new MyDictionary<>();
+        MyIList<Integer> out4 = new MyList<>();
+        MyIStack<IStmt> exeStack4 = new MyStack<>();
+        MyIDictionary<Integer, Pair<String, BufferedReader>> fileTable4 = new MyDictionary<>();
+        exeStack4.push(st4);
+        PrgState prgState4 = new PrgState(exeStack4,symTable4,out4,fileTable4);
         IRepository repo4 = new Repository(prgState4,"log.txt");
         Controller ctrl4 = new Controller(repo4);
-        ctrl4.allStep(true);
 
+        TextMenu menu = new TextMenu();
+        menu.addCommand(new ExitCommand("0","exit"));
+        menu.addCommand(new RunExample("1",st1.toString(),ctrl));
+        menu.addCommand(new RunExample("2",st2.toString(),ctrl2));
+        menu.addCommand(new RunExample("3",st3.toString(),ctrl3));
+        menu.addCommand(new RunExample("4",st4.toString(),ctrl4));
+        menu.show();
     }
 
 }
