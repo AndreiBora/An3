@@ -18,7 +18,7 @@ public class ReadFileStmt implements IStmt {
 
     @Override
     public PrgState execute(PrgState state) {
-        Integer fd = expFileId.eval(state.getSymTable());
+        Integer fd = expFileId.eval(state.getSymTable(),state.getHeap());
         //check if the file descriptor exists in the file table
         Pair<String, BufferedReader> val = state.getFileTable().get(fd);
         if (val == null) {

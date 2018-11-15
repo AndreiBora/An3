@@ -10,7 +10,7 @@ public class VarExp extends Exp{
     }
 
     @Override
-    int eval(MyIDictionary<String, Integer> tbl) {
+    int eval(MyIDictionary<String, Integer> tbl,IHeap<Integer> heap) {
         Integer res = tbl.get(this.id);
         if(res == null){
             throw new UndefinedVariableException(this.id + " must be declared before");

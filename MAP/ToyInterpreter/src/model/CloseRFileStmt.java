@@ -16,7 +16,7 @@ public class CloseRFileStmt implements IStmt {
 
     @Override
     public PrgState execute(PrgState state) {
-        Integer val = expFileId.eval(state.getSymTable());
+        Integer val = expFileId.eval(state.getSymTable(),state.getHeap());
         Pair<String, BufferedReader> strBr = state.getFileTable().get(val);
         if (strBr == null) {
             throw new FileDescriptorNotFoundException("Could not close the file because fd = " + val + " does not exists");

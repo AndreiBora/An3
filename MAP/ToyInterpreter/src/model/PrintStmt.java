@@ -16,7 +16,8 @@ public class PrintStmt implements IStmt{
     public PrgState execute(PrgState state) {
         MyIList<Integer> out = state.getOut();
         MyIDictionary<String,Integer> symTbl = state.getSymTable();
-        out.add(exp.eval(symTbl));
+        IHeap<Integer> heap = state.getHeap();
+        out.add(exp.eval(symTbl,heap));
 
         return state;
     }

@@ -1,39 +1,180 @@
 
 ExeStack: 
-open(test.in)
-ReadFileStmt(var_f + 2, var_c) ; print(var_c) ; if (var_c) then ReadFileStmt(var_f, var_c) ; print(var_c) else print(0) end  ; CloseRFileStmt(var_f)
+v = 10
+NewStmt(v ,20) ; NewStmt(a ,22) ; wh (a, 30) ; print(a) ; print(rh( a ))
 
 SymTable: 
 
 Out: 
 
 FileTable: 
+
+Heap: 
 
 ------------------
 
 ExeStack: 
-ReadFileStmt(var_f + 2, var_c) ; print(var_c) ; if (var_c) then ReadFileStmt(var_f, var_c) ; print(var_c) else print(0) end  ; CloseRFileStmt(var_f)
+NewStmt(v ,20) ; NewStmt(a ,22) ; wh (a, 30) ; print(a) ; print(rh( a ))
 
 SymTable: 
-var_f -> 1
+v -> 10
 
 Out: 
 
 FileTable: 
-1 -> test.in=java.io.BufferedReader@7ea987ac
+
+Heap: 
 
 ------------------
 
 ExeStack: 
-ReadFileStmt(var_f + 2, var_c)
-print(var_c) ; if (var_c) then ReadFileStmt(var_f, var_c) ; print(var_c) else print(0) end  ; CloseRFileStmt(var_f)
+NewStmt(v ,20)
+NewStmt(a ,22) ; wh (a, 30) ; print(a) ; print(rh( a ))
 
 SymTable: 
-var_f -> 1
+v -> 10
 
 Out: 
 
 FileTable: 
-1 -> test.in=java.io.BufferedReader@7ea987ac
+
+Heap: 
+
+------------------
+
+ExeStack: 
+NewStmt(a ,22) ; wh (a, 30) ; print(a) ; print(rh( a ))
+
+SymTable: 
+v -> 1
+
+Out: 
+
+FileTable: 
+
+Heap: 
+1 -> 20
+
+------------------
+
+ExeStack: 
+NewStmt(a ,22)
+wh (a, 30) ; print(a) ; print(rh( a ))
+
+SymTable: 
+v -> 1
+
+Out: 
+
+FileTable: 
+
+Heap: 
+1 -> 20
+
+------------------
+
+ExeStack: 
+wh (a, 30) ; print(a) ; print(rh( a ))
+
+SymTable: 
+a -> 2
+v -> 1
+
+Out: 
+
+FileTable: 
+
+Heap: 
+1 -> 20
+2 -> 22
+
+------------------
+
+ExeStack: 
+wh (a, 30)
+print(a) ; print(rh( a ))
+
+SymTable: 
+a -> 2
+v -> 1
+
+Out: 
+
+FileTable: 
+
+Heap: 
+1 -> 20
+2 -> 22
+
+------------------
+
+ExeStack: 
+print(a) ; print(rh( a ))
+
+SymTable: 
+a -> 2
+v -> 1
+
+Out: 
+
+FileTable: 
+
+Heap: 
+1 -> 20
+2 -> 30
+
+------------------
+
+ExeStack: 
+print(a)
+print(rh( a ))
+
+SymTable: 
+a -> 2
+v -> 1
+
+Out: 
+
+FileTable: 
+
+Heap: 
+1 -> 20
+2 -> 30
+
+------------------
+
+ExeStack: 
+print(rh( a ))
+
+SymTable: 
+a -> 2
+v -> 1
+
+Out: 
+2
+
+FileTable: 
+
+Heap: 
+1 -> 20
+2 -> 30
+
+------------------
+
+ExeStack: 
+
+SymTable: 
+a -> 2
+v -> 1
+
+Out: 
+2
+30
+
+FileTable: 
+
+Heap: 
+1 -> 20
+2 -> 30
 
 ------------------

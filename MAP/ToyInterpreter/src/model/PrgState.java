@@ -11,13 +11,15 @@ public class PrgState {
     private MyIDictionary<String, Integer> symTable;
     private MyIList<Integer> out;
     private IFileTable fileTable;
+    private IHeap<Integer> heap;
 
 
-    public PrgState(MyIStack<IStmt> exeStack, MyIDictionary<String, Integer> symTable, MyIList<Integer> out, IFileTable fileTable) {
+    public PrgState(MyIStack<IStmt> exeStack, MyIDictionary<String, Integer> symTable, MyIList<Integer> out, IFileTable fileTable,IHeap<Integer> heap) {
         this.exeStack = exeStack;
         this.symTable = symTable;
         this.out = out;
         this.fileTable = fileTable;
+        this.heap = heap;
     }
 
     public PrgState oneStep() {
@@ -28,6 +30,14 @@ public class PrgState {
             throw new MyStmtExecException("No more statements to execute");
         }
         return stmt.execute(this);
+    }
+
+    public IHeap<Integer> getHeap() {
+        return heap;
+    }
+
+    public void setHeap(IHeap<Integer> heap) {
+        this.heap = heap;
     }
 
     public IFileTable getFileTable() {
@@ -68,6 +78,7 @@ public class PrgState {
                 "\nSymTable: " + symTable.toString() +
                 "\nOut: " + out.toString() +
                 "\nFileTable: " + fileTable.toString()+
+                "\nHeap: " + heap.toString() +
                 "\n------------------\n";
     }
 }

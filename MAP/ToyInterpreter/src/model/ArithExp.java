@@ -15,21 +15,21 @@ public class ArithExp extends Exp{
 
 
     @Override
-    int eval(MyIDictionary<String, Integer> tbl) {
+    int eval(MyIDictionary<String, Integer> tbl,IHeap<Integer> heap) {
         int res = 0;
         switch (op){
             case '+':
-                res = (this.e1.eval(tbl) + this.e2.eval(tbl));
+                res = (this.e1.eval(tbl,heap) + this.e2.eval(tbl,heap));
                 break;
             case '-':
-                res =  (this.e1.eval(tbl) - this.e2.eval(tbl));
+                res =  (this.e1.eval(tbl,heap) - this.e2.eval(tbl,heap));
                 break;
             case '*':
-                res = (this.e1.eval(tbl) * this.e2.eval(tbl));
+                res = (this.e1.eval(tbl,heap) * this.e2.eval(tbl,heap));
                 break;
             case '/':
-                if(e2.eval(tbl) != 0) {
-                    res = (this.e1.eval(tbl) / this.e2.eval(tbl));
+                if(e2.eval(tbl,heap) != 0) {
+                    res = (this.e1.eval(tbl,heap) / this.e2.eval(tbl,heap));
                 }else{
                     throw new DivisionByZeroException();
                 }

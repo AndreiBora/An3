@@ -17,7 +17,8 @@ public class AssignStmt implements IStmt {
     @Override
     public PrgState execute(PrgState state) {
         MyIDictionary<String,Integer> symTbl = state.getSymTable();
-        int val = exp.eval(symTbl);
+        IHeap<Integer> heap = state.getHeap();
+        int val = exp.eval(symTbl,heap);
         //If the symbol table contains the value it updates it
         //else it adds it
         symTbl.put(this.id,val);

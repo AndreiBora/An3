@@ -8,7 +8,7 @@ public class ConstExp extends Exp{
     }
 
     @Override
-    int eval(MyIDictionary<String, Integer> tbl) {
+    int eval(MyIDictionary<String, Integer> tbl,IHeap<Integer> heap) {
         return number;
     }
 
