@@ -10,10 +10,10 @@ public class PrgState {
     private MyIStack<IStmt> exeStack;
     private MyIDictionary<String, Integer> symTable;
     private MyIList<Integer> out;
-    private MyIDictionary<Integer, Pair<String, BufferedReader>> fileTable;
+    private IFileTable fileTable;
 
 
-    public PrgState(MyIStack<IStmt> exeStack, MyIDictionary<String, Integer> symTable, MyIList<Integer> out, MyIDictionary<Integer, Pair<String, BufferedReader>> fileTable) {
+    public PrgState(MyIStack<IStmt> exeStack, MyIDictionary<String, Integer> symTable, MyIList<Integer> out, IFileTable fileTable) {
         this.exeStack = exeStack;
         this.symTable = symTable;
         this.out = out;
@@ -30,11 +30,11 @@ public class PrgState {
         return stmt.execute(this);
     }
 
-    public MyIDictionary<Integer, Pair<String, BufferedReader>> getFileTable() {
+    public IFileTable getFileTable() {
         return fileTable;
     }
 
-    public void setFileTable(MyIDictionary<Integer, Pair<String, BufferedReader>> fileTable) {
+    public void setFileTable(IFileTable fileTable) {
         this.fileTable = fileTable;
     }
 

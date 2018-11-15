@@ -8,7 +8,6 @@ import java.io.FileReader;
 import java.io.IOException;
 
 public class OpenRFileStmt implements IStmt {
-    private static Integer fileDescriptor = 1;
     private String varFileId;
     private String fileName;
 
@@ -27,12 +26,12 @@ public class OpenRFileStmt implements IStmt {
         //save into file table
         try {
             BufferedReader br = new BufferedReader(new FileReader(this.fileName));
-            state.getFileTable().put(fileDescriptor, new Pair<>(this.fileName, br));
+            state.getFileTable().add(this.fileName,br);
         } catch (IOException e) {
             throw new FileOpenException("Could not open the file " + this.fileName);
         }
         //save into symbol table
-        state.getSymTable().put(this.varFileId, fileDescriptor++);
+        state.getSymTable().put(this.varFileId, FileTable.getFileDescriptor()-1);
         return state;
     }
 

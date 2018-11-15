@@ -1,7 +1,7 @@
 
 ExeStack: 
 open(test.in)
-ReadFileStmt(var_f, var_c) ; print(var_c) ; if (var_c) then ReadFileStmt(var_f, var_c) ; print(var_c) else print(0) end  ; CloseRFileStmt(var_f)
+ReadFileStmt(var_f + 2, var_c) ; print(var_c) ; if (var_c) then ReadFileStmt(var_f, var_c) ; print(var_c) else print(0) end  ; CloseRFileStmt(var_f)
 
 SymTable: 
 
@@ -12,7 +12,7 @@ FileTable:
 ------------------
 
 ExeStack: 
-ReadFileStmt(var_f, var_c) ; print(var_c) ; if (var_c) then ReadFileStmt(var_f, var_c) ; print(var_c) else print(0) end  ; CloseRFileStmt(var_f)
+ReadFileStmt(var_f + 2, var_c) ; print(var_c) ; if (var_c) then ReadFileStmt(var_f, var_c) ; print(var_c) else print(0) end  ; CloseRFileStmt(var_f)
 
 SymTable: 
 var_f -> 1
@@ -25,7 +25,7 @@ FileTable:
 ------------------
 
 ExeStack: 
-ReadFileStmt(var_f, var_c)
+ReadFileStmt(var_f + 2, var_c)
 print(var_c) ; if (var_c) then ReadFileStmt(var_f, var_c) ; print(var_c) else print(0) end  ; CloseRFileStmt(var_f)
 
 SymTable: 
@@ -35,144 +35,5 @@ Out:
 
 FileTable: 
 1 -> test.in=java.io.BufferedReader@7ea987ac
-
-------------------
-
-ExeStack: 
-print(var_c) ; if (var_c) then ReadFileStmt(var_f, var_c) ; print(var_c) else print(0) end  ; CloseRFileStmt(var_f)
-
-SymTable: 
-var_f -> 1
-var_c -> 15
-
-Out: 
-
-FileTable: 
-1 -> test.in=java.io.BufferedReader@7ea987ac
-
-------------------
-
-ExeStack: 
-print(var_c)
-if (var_c) then ReadFileStmt(var_f, var_c) ; print(var_c) else print(0) end  ; CloseRFileStmt(var_f)
-
-SymTable: 
-var_f -> 1
-var_c -> 15
-
-Out: 
-
-FileTable: 
-1 -> test.in=java.io.BufferedReader@7ea987ac
-
-------------------
-
-ExeStack: 
-if (var_c) then ReadFileStmt(var_f, var_c) ; print(var_c) else print(0) end  ; CloseRFileStmt(var_f)
-
-SymTable: 
-var_f -> 1
-var_c -> 15
-
-Out: 
-15
-
-FileTable: 
-1 -> test.in=java.io.BufferedReader@7ea987ac
-
-------------------
-
-ExeStack: 
-if (var_c) then ReadFileStmt(var_f, var_c) ; print(var_c) else print(0) end 
-CloseRFileStmt(var_f)
-
-SymTable: 
-var_f -> 1
-var_c -> 15
-
-Out: 
-15
-
-FileTable: 
-1 -> test.in=java.io.BufferedReader@7ea987ac
-
-------------------
-
-ExeStack: 
-ReadFileStmt(var_f, var_c) ; print(var_c)
-CloseRFileStmt(var_f)
-
-SymTable: 
-var_f -> 1
-var_c -> 15
-
-Out: 
-15
-
-FileTable: 
-1 -> test.in=java.io.BufferedReader@7ea987ac
-
-------------------
-
-ExeStack: 
-ReadFileStmt(var_f, var_c)
-print(var_c)
-CloseRFileStmt(var_f)
-
-SymTable: 
-var_f -> 1
-var_c -> 15
-
-Out: 
-15
-
-FileTable: 
-1 -> test.in=java.io.BufferedReader@7ea987ac
-
-------------------
-
-ExeStack: 
-print(var_c)
-CloseRFileStmt(var_f)
-
-SymTable: 
-var_f -> 1
-var_c -> 50
-
-Out: 
-15
-
-FileTable: 
-1 -> test.in=java.io.BufferedReader@7ea987ac
-
-------------------
-
-ExeStack: 
-CloseRFileStmt(var_f)
-
-SymTable: 
-var_f -> 1
-var_c -> 50
-
-Out: 
-15
-50
-
-FileTable: 
-1 -> test.in=java.io.BufferedReader@7ea987ac
-
-------------------
-
-ExeStack: 
-
-SymTable: 
-var_f -> 1
-var_c -> 50
-
-Out: 
-15
-50
-
-FileTable: 
 
 ------------------

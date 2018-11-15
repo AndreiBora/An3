@@ -22,15 +22,15 @@ public class ReadFileStmt implements IStmt {
         //check if the file descriptor exists in the file table
         Pair<String, BufferedReader> val = state.getFileTable().get(fd);
         if (val == null) {
-            throw new FileDescriptorNotFoundException(fd.toString() + " is not present in the file table");
+            throw new FileDescriptorNotFoundException("File descriptor id =" + fd.toString() + " is not present in the file table");
         }
         BufferedReader br = val.getValue();
         try {
-            Integer value = Integer.parseInt(br.readLine());
-            if (value == null) {
+            String line = br.readLine();
+            if (line == null) {
                 state.getSymTable().put(this.varName, 0);
             } else {
-                state.getSymTable().put(this.varName, value);
+                state.getSymTable().put(this.varName, Integer.parseInt(line));
             }
         } catch (IOException e) {
             throw new ReadFromFileException("Could not read from file with fd = " + fd);
