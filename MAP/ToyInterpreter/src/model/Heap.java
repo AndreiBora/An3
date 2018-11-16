@@ -1,7 +1,9 @@
 package model;
 
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 public class Heap<T> implements IHeap<T> {
     private Integer addr = 1;
@@ -30,6 +32,16 @@ public class Heap<T> implements IHeap<T> {
     @Override
     public T writeToAddr(Integer addr, T value) {
         return this.map.put(addr,value);
+    }
+
+    @Override
+    public void setContent(Map<Integer, T> map) {
+        this.map = map;
+    }
+
+    @Override
+    public Map<Integer, T> getContent() {
+        return map;
     }
 
     @Override

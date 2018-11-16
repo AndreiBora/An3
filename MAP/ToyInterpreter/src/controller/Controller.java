@@ -1,7 +1,12 @@
 package controller;
 
+import model.MyIDictionary;
 import model.PrgState;
 import repository.IRepository;
+
+import java.util.Collection;
+import java.util.Map;
+import java.util.stream.Collectors;
 
 public class Controller {
     private IRepository repository;
@@ -22,6 +27,9 @@ public class Controller {
 
         while (!prgState.getExeStack().isEmpty()) {
             prgState.oneStep();
+            prgState.getHeap().setContent(conservativeGarbageCollector(
+                    prgState.getSymTable().values(),prgState.getHeap().getContent()
+            ));
             if (flag) {
                 repository.logPrgStateExec();
             }
@@ -30,5 +38,11 @@ public class Controller {
 
     private static void displayState(PrgState prgState) {
         System.out.println(prgState.toString());
+    }
+
+    Map<Integer,Integer> conservativeGarbageCollector(Collection<Integer> symTableValues, Map<Integer,Integer> heap){
+        return heap.entrySet().stream()
+                .filter(e -> symTableValues.contains(e.getKey()))
+                .collect(Collectors.toMap(Map.Entry::getKey,Map.Entry::getValue));
     }
 }

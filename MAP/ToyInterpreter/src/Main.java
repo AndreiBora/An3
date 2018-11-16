@@ -238,6 +238,43 @@ public class Main {
         IRepository repo8 = new Repository(prgState8,"log.txt");
         Controller ctrl8 = new Controller(repo8);
 
+        //---------------------------------------------------------------------------------
+
+        // v=10;new(v,20);new(a,22);wH(a,30);print(a);print(rH(a));a=0
+        IStmt st9 = new CompStmt(
+                new AssignStmt("v",new ConstExp(10)),
+                new CompStmt(
+                        new NewStmt("v",new ConstExp(20)),
+                        new CompStmt(
+                                new NewStmt("a",new ConstExp(22)),
+                                new CompStmt(
+                                        new WriteHeapStmt("a",new ConstExp(30)),
+                                        new CompStmt(
+                                                new PrintStmt(new VarExp("a")),
+                                                new CompStmt(
+                                                        new PrintStmt(
+                                                                new ReadHeapExp("a")
+                                                        ),
+                                                        new AssignStmt("a",new ConstExp(0))
+                                                )
+                                        )
+
+                                )
+                        )
+                )
+        );
+
+        MyIDictionary<String,Integer> symTable9 = new MyDictionary<>();
+        MyIList<Integer> out9 = new MyList<>();
+        MyIStack<IStmt> exeStack9 = new MyStack<>();
+        IFileTable fileTable9 = new FileTable();
+        IHeap<Integer> heap9 = new Heap<>();
+
+        exeStack9.push(st9);
+        PrgState prgState9 = new PrgState(exeStack9,symTable9,out9,fileTable9,heap9);
+        IRepository repo9 = new Repository(prgState9,"log.txt");
+        Controller ctrl9 = new Controller(repo9);
+
         TextMenu menu = new TextMenu();
         menu.addCommand(new ExitCommand("0","exit"));
         menu.addCommand(new RunExample("1",st1.toString(),ctrl));
@@ -248,6 +285,7 @@ public class Main {
         menu.addCommand(new RunExample("6",st6.toString(),ctrl6));
         menu.addCommand(new RunExample("7",st7.toString(),ctrl7));
         menu.addCommand(new RunExample("8",st8.toString(),ctrl8));
+        menu.addCommand(new RunExample("9",st9.toString(),ctrl9));
         menu.show();
     }
 

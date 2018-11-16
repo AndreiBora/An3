@@ -1,7 +1,7 @@
 
 ExeStack: 
 v = 10
-NewStmt(v ,20) ; NewStmt(a ,22) ; wh (a, 30) ; print(a) ; print(rh( a ))
+NewStmt(v ,20) ; NewStmt(a ,22) ; wh (a, 30) ; print(a) ; print(rh( a )) ; a = 0
 
 SymTable: 
 
@@ -14,7 +14,7 @@ Heap:
 ------------------
 
 ExeStack: 
-NewStmt(v ,20) ; NewStmt(a ,22) ; wh (a, 30) ; print(a) ; print(rh( a ))
+NewStmt(v ,20) ; NewStmt(a ,22) ; wh (a, 30) ; print(a) ; print(rh( a )) ; a = 0
 
 SymTable: 
 v -> 10
@@ -29,7 +29,7 @@ Heap:
 
 ExeStack: 
 NewStmt(v ,20)
-NewStmt(a ,22) ; wh (a, 30) ; print(a) ; print(rh( a ))
+NewStmt(a ,22) ; wh (a, 30) ; print(a) ; print(rh( a )) ; a = 0
 
 SymTable: 
 v -> 10
@@ -43,7 +43,7 @@ Heap:
 ------------------
 
 ExeStack: 
-NewStmt(a ,22) ; wh (a, 30) ; print(a) ; print(rh( a ))
+NewStmt(a ,22) ; wh (a, 30) ; print(a) ; print(rh( a )) ; a = 0
 
 SymTable: 
 v -> 1
@@ -59,7 +59,7 @@ Heap:
 
 ExeStack: 
 NewStmt(a ,22)
-wh (a, 30) ; print(a) ; print(rh( a ))
+wh (a, 30) ; print(a) ; print(rh( a )) ; a = 0
 
 SymTable: 
 v -> 1
@@ -74,7 +74,7 @@ Heap:
 ------------------
 
 ExeStack: 
-wh (a, 30) ; print(a) ; print(rh( a ))
+wh (a, 30) ; print(a) ; print(rh( a )) ; a = 0
 
 SymTable: 
 a -> 2
@@ -92,7 +92,7 @@ Heap:
 
 ExeStack: 
 wh (a, 30)
-print(a) ; print(rh( a ))
+print(a) ; print(rh( a )) ; a = 0
 
 SymTable: 
 a -> 2
@@ -109,7 +109,7 @@ Heap:
 ------------------
 
 ExeStack: 
-print(a) ; print(rh( a ))
+print(a) ; print(rh( a )) ; a = 0
 
 SymTable: 
 a -> 2
@@ -127,7 +127,7 @@ Heap:
 
 ExeStack: 
 print(a)
-print(rh( a ))
+print(rh( a )) ; a = 0
 
 SymTable: 
 a -> 2
@@ -144,7 +144,7 @@ Heap:
 ------------------
 
 ExeStack: 
-print(rh( a ))
+print(rh( a )) ; a = 0
 
 SymTable: 
 a -> 2
@@ -162,6 +162,26 @@ Heap:
 ------------------
 
 ExeStack: 
+print(rh( a ))
+a = 0
+
+SymTable: 
+a -> 2
+v -> 1
+
+Out: 
+2
+
+FileTable: 
+
+Heap: 
+1 -> 20
+2 -> 30
+
+------------------
+
+ExeStack: 
+a = 0
 
 SymTable: 
 a -> 2
@@ -176,5 +196,22 @@ FileTable:
 Heap: 
 1 -> 20
 2 -> 30
+
+------------------
+
+ExeStack: 
+
+SymTable: 
+a -> 0
+v -> 1
+
+Out: 
+2
+30
+
+FileTable: 
+
+Heap: 
+1 -> 20
 
 ------------------
