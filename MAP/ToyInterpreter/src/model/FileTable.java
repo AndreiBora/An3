@@ -35,6 +35,11 @@ public class FileTable implements IFileTable {
         return this.map.remove(key);
     }
 
+    @Override
+    public Collection<Integer> getKeys() {
+        return map.keySet();
+    }
+
     public static Integer getFileDescriptor() {
         return fileDescriptor;
     }

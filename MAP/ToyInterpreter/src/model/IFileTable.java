@@ -10,4 +10,5 @@ public interface IFileTable {
     Collection<Pair<String,BufferedReader>> values();
     Pair<String,BufferedReader> get(Integer key);
     Pair<String,BufferedReader> remove(Integer key);
+    Collection<Integer> getKeys();
 }

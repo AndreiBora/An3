@@ -1,5 +1,7 @@
 package controller;
 
+import model.CloseRFileStmt;
+import model.ConstExp;
 import model.MyIDictionary;
 import model.PrgState;
 import repository.IRepository;
@@ -25,14 +27,20 @@ public class Controller {
     public void allStep(Boolean flag) {
         PrgState prgState = this.repository.getCurrentState();
 
-        while (!prgState.getExeStack().isEmpty()) {
-            prgState.oneStep();
-            prgState.getHeap().setContent(conservativeGarbageCollector(
-                    prgState.getSymTable().values(),prgState.getHeap().getContent()
-            ));
-            if (flag) {
-                repository.logPrgStateExec();
+        try {
+            while (!prgState.getExeStack().isEmpty()) {
+                prgState.oneStep();
+                prgState.getHeap().setContent(conservativeGarbageCollector(
+                        prgState.getSymTable().values(), prgState.getHeap().getContent()
+                ));
+                if (flag) {
+                    repository.logPrgStateExec();
+                }
             }
+        }catch (Exception e){
+            System.out.println(e);
+        }finally {
+            prgState.getFileTable().getKeys().forEach(x-> new CloseRFileStmt(new ConstExp(x)).execute(prgState));
         }
     }
 
