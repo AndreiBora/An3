@@ -1,7 +1,20 @@
 
 ExeStack: 
-open(test.in)
-ReadFileStmt(var_f, var_c) ; print(var_c) ; if (var_c) then ReadFileStmt(var_f, var_c) ; print(var_c) else print(0) end 
+
+SymTable: 
+a -> 11
+
+Out: 
+
+FileTable: 
+
+Heap: 
+
+------------------
+
+ExeStack: 
+v = 6
+While (v - 4) do print(v) ; v = v - 1 end  ; print(v)
 
 SymTable: 
 
@@ -14,133 +27,181 @@ Heap:
 ------------------
 
 ExeStack: 
-ReadFileStmt(var_f, var_c) ; print(var_c) ; if (var_c) then ReadFileStmt(var_f, var_c) ; print(var_c) else print(0) end 
+While (v - 4) do print(v) ; v = v - 1 end  ; print(v)
 
 SymTable: 
-var_f -> 1
+v -> 6
 
 Out: 
 
 FileTable: 
-1 -> test.in=java.io.BufferedReader@34a245ab
 
 Heap: 
 
 ------------------
 
 ExeStack: 
-ReadFileStmt(var_f, var_c)
-print(var_c) ; if (var_c) then ReadFileStmt(var_f, var_c) ; print(var_c) else print(0) end 
+While (v - 4) do print(v) ; v = v - 1 end 
+print(v)
 
 SymTable: 
-var_f -> 1
+v -> 6
 
 Out: 
 
 FileTable: 
-1 -> test.in=java.io.BufferedReader@34a245ab
 
 Heap: 
 
 ------------------
 
 ExeStack: 
-print(var_c) ; if (var_c) then ReadFileStmt(var_f, var_c) ; print(var_c) else print(0) end 
+print(v) ; v = v - 1
+While (v - 4) do print(v) ; v = v - 1 end 
+print(v)
 
 SymTable: 
-var_f -> 1
-var_c -> 15
+v -> 6
 
 Out: 
 
 FileTable: 
-1 -> test.in=java.io.BufferedReader@34a245ab
 
 Heap: 
 
 ------------------
 
 ExeStack: 
-print(var_c)
-if (var_c) then ReadFileStmt(var_f, var_c) ; print(var_c) else print(0) end 
+print(v)
+v = v - 1
+While (v - 4) do print(v) ; v = v - 1 end 
+print(v)
 
 SymTable: 
-var_f -> 1
-var_c -> 15
+v -> 6
 
 Out: 
 
 FileTable: 
-1 -> test.in=java.io.BufferedReader@34a245ab
 
 Heap: 
 
 ------------------
 
 ExeStack: 
-if (var_c) then ReadFileStmt(var_f, var_c) ; print(var_c) else print(0) end 
+v = v - 1
+While (v - 4) do print(v) ; v = v - 1 end 
+print(v)
 
 SymTable: 
-var_f -> 1
-var_c -> 15
+v -> 6
 
 Out: 
-15
+6
 
 FileTable: 
-1 -> test.in=java.io.BufferedReader@34a245ab
 
 Heap: 
 
 ------------------
 
 ExeStack: 
-ReadFileStmt(var_f, var_c) ; print(var_c)
+While (v - 4) do print(v) ; v = v - 1 end 
+print(v)
 
 SymTable: 
-var_f -> 1
-var_c -> 15
+v -> 5
 
 Out: 
-15
+6
 
 FileTable: 
-1 -> test.in=java.io.BufferedReader@34a245ab
 
 Heap: 
 
 ------------------
 
 ExeStack: 
-ReadFileStmt(var_f, var_c)
-print(var_c)
+print(v) ; v = v - 1
+While (v - 4) do print(v) ; v = v - 1 end 
+print(v)
 
 SymTable: 
-var_f -> 1
-var_c -> 15
+v -> 5
 
 Out: 
-15
+6
 
 FileTable: 
-1 -> test.in=java.io.BufferedReader@34a245ab
 
 Heap: 
 
 ------------------
 
 ExeStack: 
-print(var_c)
+print(v)
+v = v - 1
+While (v - 4) do print(v) ; v = v - 1 end 
+print(v)
 
 SymTable: 
-var_f -> 1
-var_c -> 50
+v -> 5
 
 Out: 
-15
+6
 
 FileTable: 
-1 -> test.in=java.io.BufferedReader@34a245ab
+
+Heap: 
+
+------------------
+
+ExeStack: 
+v = v - 1
+While (v - 4) do print(v) ; v = v - 1 end 
+print(v)
+
+SymTable: 
+v -> 5
+
+Out: 
+6
+5
+
+FileTable: 
+
+Heap: 
+
+------------------
+
+ExeStack: 
+While (v - 4) do print(v) ; v = v - 1 end 
+print(v)
+
+SymTable: 
+v -> 4
+
+Out: 
+6
+5
+
+FileTable: 
+
+Heap: 
+
+------------------
+
+ExeStack: 
+print(v)
+
+SymTable: 
+v -> 4
+
+Out: 
+6
+5
+
+FileTable: 
 
 Heap: 
 
@@ -149,15 +210,14 @@ Heap:
 ExeStack: 
 
 SymTable: 
-var_f -> 1
-var_c -> 50
+v -> 4
 
 Out: 
-15
-50
+6
+5
+4
 
 FileTable: 
-1 -> test.in=java.io.BufferedReader@34a245ab
 
 Heap: 
 
