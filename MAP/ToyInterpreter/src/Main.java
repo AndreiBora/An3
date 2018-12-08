@@ -12,6 +12,7 @@ import java.io.BufferedReader;
 public class Main {
 
     public static void main(String[] args) {
+        /*
         MyIDictionary<String, Integer> symTable = new MyDictionary<>();
         MyIList<Integer> out = new MyList<>();
         MyIStack<IStmt> exeStack1 = new MyStack<>();
@@ -70,14 +71,14 @@ public class Main {
         IRepository repo3 = new Repository(prgState3, "log.txt");
         Controller ctrl3 = new Controller(repo3);
 
-        //-----------------------------------------------------------------
-        /*
-         *   Lab5Ex1
-         *   openRFile (var_f, "test.in");
-         *   readFile (var_f, var_c); print (var_c);
-         *   If var_c then readFile (var_f, var_c); print (var_c) else print (0);
-         *   closeRFile (var_f)
-         */
+        -----------------------------------------------------------------
+//
+//           Lab5Ex1
+//            openRFile (var_f, "test.in");
+//            readFile (var_f, var_c); print (var_c);
+//           If var_c then readFile (var_f, var_c); print (var_c) else print (0);
+//           closeRFile (var_f)
+//
 
         IStmt st4 = new CompStmt(
                 new OpenRFileStmt("var_f", "test.in"),
@@ -111,13 +112,13 @@ public class Main {
         Controller ctrl4 = new Controller(repo4);
 
 
-        /*
-         *   Lab5Ex2
-         *   openRFile (var_f, "test.in");
-         *   readFile (var_f + 2, var_c); print (var_c);
-         *   If var_c then readFile (var_f, var_c); print (var_c) else print (0);
-         *   closeRFile (var_f)
-         */
+
+//           Lab5Ex2
+//           openRFile (var_f, "test.in");
+//           readFile (var_f + 2, var_c); print (var_c);
+//            If var_c then readFile (var_f, var_c); print (var_c) else print (0);
+//           closeRFile (var_f)
+
 
         IStmt st5 = new CompStmt(
                 new OpenRFileStmt("var_f", "test.in"),
@@ -331,11 +332,11 @@ public class Main {
 
 
         //-----------------------------------------------------------------
-        /*
-         *   openRFile (var_f, "test.in");
-         *   readFile (var_f, var_c); print (var_c);
-         *   If var_c then readFile (var_f, var_c); print (var_c) else print (0);
-         */
+
+//           openRFile (var_f, "test.in");
+//           readFile (var_f, var_c); print (var_c);
+//           If var_c then readFile (var_f, var_c); print (var_c) else print (0);
+//
 
         IStmt st12 = new CompStmt(
                 new OpenRFileStmt("var_f", "test.in"),
@@ -368,20 +369,67 @@ public class Main {
         IRepository repo12 = new Repository(prgState12, "log.txt");
         Controller ctrl12 = new Controller(repo12);
 
+
+        */
+        //v=10;new(a,22)
+        // fork(wH(a,30);v=32;print(v);print(rH(a)));
+        //print(v);print(rH(a))
+        IStmt st13 = new CompStmt(
+                new AssignStmt("v",new ConstExp(10)),
+                new CompStmt(
+                        new NewStmt("a",new ConstExp(22)),
+                        new CompStmt(
+                                new ForkStmt(
+                                        new CompStmt(
+                                                new WriteHeapStmt("a",new ConstExp(30)),
+                                                new CompStmt(
+                                                        new AssignStmt("v",new ConstExp(32)),
+                                                        new CompStmt(
+                                                                new PrintStmt(new VarExp("v")),
+                                                                new PrintStmt(
+                                                                        new ReadHeapExp("a")
+                                                                )
+                                                        )
+                                                )
+                                        )
+                                ),
+                                new CompStmt(
+                                        new PrintStmt(new VarExp("v")),
+                                        new PrintStmt(
+                                                new ReadHeapExp("a")
+                                        )
+                                )
+
+                        )
+                )
+        );
+
+        MyIDictionary<String, Integer> symTable13 = new MyDictionary<>();
+        MyIList<Integer> out13 = new MyList<>();
+        MyIStack<IStmt> exeStack13 = new MyStack<>();
+        IFileTable fileTable13 = new FileTable();
+        IHeap<Integer> heap13 = new Heap<>();
+
+        exeStack13.push(st13);
+        PrgState prgState13 = new PrgState(exeStack13, symTable13, out13, fileTable13, heap13,1);
+        IRepository repo13 = new Repository(prgState13, "log.txt");
+        Controller ctrl13 = new Controller(repo13);
+
         TextMenu menu = new TextMenu();
         menu.addCommand(new ExitCommand("0", "exit"));
-        menu.addCommand(new RunExample("1", st1.toString(), ctrl));
-        menu.addCommand(new RunExample("2", st2.toString(), ctrl2));
-        menu.addCommand(new RunExample("3", st3.toString(), ctrl3));
-        menu.addCommand(new RunExample("4", st4.toString(), ctrl4));
-        menu.addCommand(new RunExample("5", st5.toString(), ctrl5));
-        menu.addCommand(new RunExample("6", st6.toString(), ctrl6));
-        menu.addCommand(new RunExample("7", st7.toString(), ctrl7));
-        menu.addCommand(new RunExample("8", st8.toString(), ctrl8));
-        menu.addCommand(new RunExample("9", st9.toString(), ctrl9));
-        menu.addCommand(new RunExample("10", st10.toString(), ctrl10));
-        menu.addCommand(new RunExample("11", st11.toString(), ctrl11));
-        menu.addCommand(new RunExample("12", st12.toString(), ctrl12));
+//        menu.addCommand(new RunExample("1", st1.toString(), ctrl));
+//        menu.addCommand(new RunExample("2", st2.toString(), ctrl2));
+//        menu.addCommand(new RunExample("3", st3.toString(), ctrl3));
+//        menu.addCommand(new RunExample("4", st4.toString(), ctrl4));
+//        menu.addCommand(new RunExample("5", st5.toString(), ctrl5));
+//        menu.addCommand(new RunExample("6", st6.toString(), ctrl6));
+//        menu.addCommand(new RunExample("7", st7.toString(), ctrl7));
+//        menu.addCommand(new RunExample("8", st8.toString(), ctrl8));
+//        menu.addCommand(new RunExample("9", st9.toString(), ctrl9));
+//        menu.addCommand(new RunExample("10", st10.toString(), ctrl10));
+//        menu.addCommand(new RunExample("11", st11.toString(), ctrl11));
+//        menu.addCommand(new RunExample("12", st12.toString(), ctrl12));
+        menu.addCommand(new RunExample("13", st13.toString(), ctrl13));
         menu.show();
     }
 

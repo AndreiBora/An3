@@ -9,4 +9,5 @@ public interface MyIDictionary<K,V>{
     Boolean containsKey(K key);
     Collection<K> keys();
     Collection<V> values();
+    MyIDictionary<K,V> clone();
 }

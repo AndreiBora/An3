@@ -15,7 +15,7 @@ public class NewStmt implements IStmt {
         Integer addr = state.getHeap().allocate(value);
         //add var into symbol table or update if it exists
         state.getSymTable().put(varName, addr);
-        return state;
+        return null;
     }
 
     @Override

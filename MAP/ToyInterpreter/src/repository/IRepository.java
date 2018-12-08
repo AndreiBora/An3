@@ -9,6 +9,5 @@ public interface IRepository {
     void add(PrgState state);
     List<PrgState> getProgStates();
     void setProgStates(List<PrgState> progStates);
-    PrgState getCurrentState();
-    void logPrgStateExec();
+    void logPrgStateExec(PrgState prgState);
 }

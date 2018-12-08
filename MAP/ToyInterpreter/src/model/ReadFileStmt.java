@@ -36,7 +36,7 @@ public class ReadFileStmt implements IStmt {
             throw new ReadFromFileException("Could not read from file with fd = " + fd);
         }
 
-        return state;
+        return null;
     }
 
     @Override

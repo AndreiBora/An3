@@ -22,6 +22,6 @@ public class AssignStmt implements IStmt {
         //If the symbol table contains the value it updates it
         //else it adds it
         symTbl.put(this.id,val);
-        return state;
+        return null;
     }
 }

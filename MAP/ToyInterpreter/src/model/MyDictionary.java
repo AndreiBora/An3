@@ -42,6 +42,15 @@ public class MyDictionary<K,V> implements MyIDictionary<K,V> {
     }
 
     @Override
+    public MyIDictionary<K, V> clone() {
+        MyIDictionary<K,V> clone = new MyDictionary<>();
+        for(K key: map.keySet()){
+            clone.put(key,get(key));
+        }
+        return clone;
+    }
+
+    @Override
     public String toString() {
         String res = "\n";
         for(HashMap.Entry<K,V> entry: this.map.entrySet()){

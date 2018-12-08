@@ -35,14 +35,9 @@ public class Repository implements IRepository {
     }
 
     @Override
-    public PrgState getCurrentState() {
-        return this.progStates.get(0);
-    }
-
-    @Override
-    public void logPrgStateExec() {
+    public void logPrgStateExec(PrgState prgState) {
         try(BufferedWriter writer = new BufferedWriter(new FileWriter(this.logFilePath,true))){
-            writer.append(getCurrentState().toString());
+            writer.append(prgState.toString());
         }catch (IOException e){
             throw new MyStmtExecException("Error while opening the log file");
         }

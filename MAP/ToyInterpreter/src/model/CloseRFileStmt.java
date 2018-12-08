@@ -30,7 +30,7 @@ public class CloseRFileStmt implements IStmt {
         //delete entry from file table
         state.getFileTable().remove(val);
 
-        return state;
+        return null;
     }
 
     @Override

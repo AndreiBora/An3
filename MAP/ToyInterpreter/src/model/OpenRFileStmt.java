@@ -32,7 +32,7 @@ public class OpenRFileStmt implements IStmt {
         }
         //save into symbol table
         state.getSymTable().put(this.varFileId, FileTable.getFileDescriptor()-1);
-        return state;
+        return null;
     }
 
     @Override

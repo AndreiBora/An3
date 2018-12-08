@@ -23,6 +23,6 @@ public class IfStmt implements IStmt{
         }else{
             state.getExeStack().push(elseS);
         }
-        return state;
+        return null;
     }
 }
