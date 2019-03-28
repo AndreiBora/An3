@@ -1,0 +1,162 @@
+%{
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <math.h>
+
+#define IDENTIFIER 0
+#define CONSTANT 1
+
+typedef struct{
+  int key;
+  int value;
+} PIF;
+
+typedef struct{
+  char key[10];
+} ST;
+
+int pifLen = 0;
+int constLen = 0;
+int identLen = 0;
+PIF program[500];
+ST id_symtbl[50];
+int const_symtbl[50];
+
+void addPIF(int key, int value) {
+	program[pifLen].key = key;
+	program[pifLen].value = value;
+	pifLen++;
+}
+void syntax_error(char* token) {
+  printf("Illegal: %s\n", token);
+}
+
+void addConst(float token){
+	int found= 0;
+	for(int i=0;i < constLen;i++){
+		if(const_symtbl[i] == token){
+			found =1;
+			addPIF(CONSTANT,i);	
+		}	
+	}
+	if(found == 0){
+		const_symtbl[constLen] = token;
+		addPIF(CONSTANT,constLen);
+		constLen++;	
+	}
+}
+
+void addIdentif(char* atom){
+	printf("%s\n",atom);
+	int found = 0;
+	for(int i =0;i < identLen;i++){
+		if(strcmp(id_symtbl[i].key,atom) == 0){
+			found = 1;
+			addPIF(IDENTIFIER,i);		
+		}	
+	}
+	
+	if(found == 0){
+		strcpy(id_symtbl[identLen].key,atom);
+		addPIF(IDENTIFIER,identLen);
+		identLen++;	
+	}
+}
+
+void showConst(){
+	printf("--------------------\n");
+	printf("%s\n","Constant table");
+	for(int i =0;i < constLen;i++){
+		printf("%d - %d  \n",const_symtbl[i],i);	
+	}
+	printf("--------------------\n");
+}
+
+void showIdent(){
+	printf("--------------------\n");
+	for(int i = 0;i < identLen;i++){
+		printf("%s - %d \n",id_symtbl[i].key,i);	
+	}
+	printf("--------------------\n");
+}
+
+void showPIF(){
+	printf("--------------------\n");
+	printf("PIF\n");
+	for(int i = 0;i < pifLen;i++){
+		if(program[i].key != CONSTANT && program[i].key != IDENTIFIER){
+			printf("%d \n",program[i].key);
+					
+		}else{
+			printf("%d - %d \n",program[i].key,program[i].value);			
+		}		
+	}
+	
+	printf("--------------------\n");
+}
+
+void show(){
+	showPIF();
+	showIdent();
+	showConst();
+}
+
+%}
+
+%option noyywrap
+id		[a-zA-Z][a-zA-Z0-9_]*
+digit		[0-9]
+no		[1-9][0-9]*
+
+%%
+
+main		addPIF(2,-1);
+
+\{		addPIF(3,-1);
+\}		addPIF(4,-1);
+\;		addPIF(5,-1);
+\(		addPIF(6,-1);
+\)		addPIF(7,-1);
+\+		addPIF(8,-1);
+\-		addPIF(9,-1);
+\*		addPIF(10,-1);
+\/		addPIF(11,-1);
+cin		addPIF(13,-1);
+cout		addPIF(14,-1);
+while		addPIF(15,-1);
+if		addPIF(16,-1);
+else		addPIF(17,-1);
+int		addPIF(18,-1);
+float		addPIF(19,-1);
+char		addPIF(20,-1);
+\>		addPIF(21,-1);
+\>=		addPIF(22,-1);
+\<=		addPIF(23,-1);
+\<		addPIF(24,-1);
+\=		addPIF(25,-1);
+\==		addPIF(26,-1);
+\=!		addPIF(27,-1);
+return		addPIF(28,-1);
+{digit}		addConst(atoi(yytext));
+{no}		addConst(atoi(yytext));
+{id}		addIdentif(yytext);
+[ \t\n]+	; 
+.		syntax_error(yytext);
+
+
+%%
+int main( argc, argv )
+int argc;
+char **argv;
+{
+    ++argv, --argc; /* skip over program name */
+    if ( argc > 0 )
+    	yyin = fopen( argv[0], "r" );
+    else
+     	yyin = stdin;
+    yylex();
+    show();
+	return 0;
+}
+

@@ -1,0 +1,5 @@
+Data Left   Right 
+
+fact None   i     
+i    None   nr    
+nr   None   None  

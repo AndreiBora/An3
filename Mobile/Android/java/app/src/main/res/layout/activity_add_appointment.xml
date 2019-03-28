@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:layout_margin="8dp"
+    tools:context=".AddEditAppointmentActivity">
+
+    <EditText
+        android:id="@+id/etxt_patient_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Patient Name"
+        />
+    <EditText
+        android:id="@+id/etxt_reason"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Reason"
+        android:layout_marginTop="8dp"
+        />
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <TextView
+            android:id="@+id/tv_pick_lbl"
+            android:layout_marginTop="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_centerVertical="true"
+            android:text="Pick date: "
+            android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+            />
+
+        <ImageView
+            android:id="@+id/iv_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_centerInParent="true"
+            android:layout_toEndOf="@+id/tv_pick_lbl"
+            app:srcCompat="@drawable/ic_calendar" />
+
+        <TextView
+            android:id="@+id/tv_date_picked"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toEndOf="@+id/iv_date"
+            android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+            android:layout_centerInParent="true"
+            android:layout_marginLeft="40dp"
+
+            />
+
+    </RelativeLayout>
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp">
+        <TextView
+            android:id="@+id/tv_pick_time_lbl"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Pick time:"
+            android:layout_centerVertical="true"
+            android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+            />
+        <ImageView
+            android:id="@+id/iv_pick_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_access_time"
+            android:layout_toRightOf="@+id/tv_pick_time_lbl"
+            android:layout_marginLeft="25dp"
+            />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp">
+        <TextView
+            android:id="@+id/tv_date_lbl"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Duration"
+            android:layout_alignParentStart="true"
+            android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+            />
+        <Spinner
+            android:id="@+id/sp_duration"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toEndOf="@id/tv_date_lbl"
+            android:layout_marginLeft="30dp">
+        </Spinner>
+    </RelativeLayout>
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <Button
+            android:id="@+id/btn_appointment"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_centerInParent="true"
+            android:text="Add"
+            android:layout_marginBottom="20dp"/>
+    </RelativeLayout>
+
+
+
+</LinearLayout>

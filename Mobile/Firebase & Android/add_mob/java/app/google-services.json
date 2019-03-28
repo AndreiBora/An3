@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "450613079468",
+    "firebase_url": "https://dentistapp-59950.firebaseio.com",
+    "project_id": "dentistapp-59950",
+    "storage_bucket": "dentistapp-59950.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:450613079468:android:b2944d04ef511c23",
+        "android_client_info": {
+          "package_name": "andrei.csubb.com.dentistapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "450613079468-l9uinq2csblo5ufvi0k4fng2sjo30ih8.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "andrei.csubb.com.dentistapp",
+            "certificate_hash": "e1b60eb564962342469f4e1a94eec38955c80302"
+          }
+        },
+        {
+          "client_id": "450613079468-9b71m4si6hu5rbqit9ssd447qv2uta4j.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB1c1-z7IaB28qU7EqE9oZpQ9V_Cnt04MM"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "450613079468-9b71m4si6hu5rbqit9ssd447qv2uta4j.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

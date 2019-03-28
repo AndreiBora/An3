@@ -1,0 +1,7 @@
+n1 : int;
+n2 : int;
+read n1;
+read n2;
+
+sum : int = n1 + n2;
+write sum;

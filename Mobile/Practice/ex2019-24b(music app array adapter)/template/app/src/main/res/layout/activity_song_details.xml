@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="genericEntity"
+            type="com.andrei.examapp.model.GenericEntity">
+        </variable>
+    </data>
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".SongDetailsActivity">
+    <TextView
+        android:id="@+id/lbl_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Title"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        />
+    <TextView
+        android:id="@+id/tv_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@{genericEntity.title}"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        android:layout_alignParentEnd="true"
+        />
+    <TextView
+        android:id="@+id/lbl_album"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Album"
+        android:layout_below="@+id/lbl_title"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        />
+    <TextView
+        android:id="@+id/tv_album"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@{genericEntity.album}"
+        android:layout_below="@+id/tv_title"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        android:layout_alignParentEnd="true"
+        />
+
+    <TextView
+        android:id="@+id/lbl_genre"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Genre"
+        android:layout_below="@+id/lbl_album"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        />
+    <TextView
+        android:id="@+id/tv_genre"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@{genericEntity.genre}"
+        android:layout_below="@+id/tv_album"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        android:layout_alignParentEnd="true"
+        />
+    <TextView
+        android:id="@+id/lbl_year"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Year"
+        android:layout_below="@+id/lbl_genre"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        />
+    <TextView
+        android:id="@+id/tv_year"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@{genericEntity.year.toString()}"
+        android:layout_below="@+id/tv_genre"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        android:layout_alignParentEnd="true"
+        />
+
+    <Button
+        android:id="@+id/btn_add_fav"
+        android:layout_marginTop="10dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/lbl_year"
+        android:layout_centerInParent="true"
+        android:text="Add Favorite"
+        />
+
+</RelativeLayout>
+
+</layout>

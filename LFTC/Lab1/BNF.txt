@@ -1,0 +1,40 @@
+//bnf
+<program> ::="int" "main" "(" ")" <compound_stmt>
+<compound_stmt> ::= "{" <stmt_list> "}"
+<stmt_list> ::= <stmt> ";" |<stmt> ";" <stmt_list>
+<stmt> ::= <decl> | <assign> | <return> | <iostmt> | <loop> | <if_stmt> 
+<decl> ::= <type> <IDENTIFIER> | <user_type> <IDENTIFIER>
+<assign> ::= <IDENTIFIER> "=" <expression> 
+<expression> ::= <expression> <op1> <term>| <term>
+<term> ::= <term> <op2> <fact> | <fact> 
+<fact> ::= <IDENTIFIER> | <CONST> | "(" <expression> ")"
+<op1> ::= "+" | "-"
+<op2> ::=  "*" | "/" | "%"
+<return> ::= "return" <expression>
+<iostmt> ::= <input> | <output>
+<input> ::= "cin" <IDENTIFIER>
+<output> ::= "cout" <IDENTIFIER>
+<loop> ::= "while" "(" <condition> ")" <compound_stmt>
+<condition> ::= <expression> <RELATION> <expression> 
+<if_stmt> ::= "if" "(" <condition> ")" <compound_stmt> | "if" "(" <condition> ")" <compound_stmt> "else" <compound_stmt>
+<user_type> ::= "struct" <IDENTIFIER> "{" <decl> "}"
+
+
+<type> ::= "int" | "float" | "char"
+<CONST> ::= <integer> | <real>
+<integer> ::= +<digit>| -<digit> | <digit> | <integer> <digit>
+<real> ::= <integer> "." <integer>
+<IDENTIFIER> ::= <character>
+	|<character><character>
+	|<character><character><character>
+	|<character><character><character><character>
+	|<character><character><character><character><character>
+	|<character><character><character><character><character><character>
+	|<character><character><character><character><character><character><character>
+	|<character><character><character><character><character><character><character><character>
+<character> ::= <letter> | <digit> |<special_symbol>
+<letter> ::= "a" | .. | "z" | "A" | .. | "Z"
+<digit> ::= "0" | "1" | .. | "9"
+<special_symbol> ::= "_"
+<RELATION> ::= "<" | "<=" | "==" | "!=" | ">=" | ">"
+

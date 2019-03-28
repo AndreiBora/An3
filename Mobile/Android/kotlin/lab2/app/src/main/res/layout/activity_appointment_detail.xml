@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center_vertical|fill_horizontal"
+    tools:context=".AppointmentDetailActivity">
+
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/appStartText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="16dp"
+            android:text="Start date:"
+            android:textSize="18sp"
+            app:layout_constraintStart_toStartOf="@+id/guideline"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/appStartTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="50dp"
+            android:layout_toRightOf="@+id/appStartText"
+
+            android:textSize="18sp"
+            app:layout_constraintBottom_toBottomOf="@+id/appStartText"
+            app:layout_constraintStart_toEndOf="@+id/appStartText"
+            app:layout_constraintTop_toTopOf="@+id/appStartText"
+            app:layout_constraintVertical_bias="1.0" />
+
+        <TextView
+            android:id="@+id/appEndText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:text="End date:"
+            android:textSize="18sp"
+            app:layout_constraintStart_toStartOf="@+id/guideline"
+            app:layout_constraintTop_toBottomOf="@+id/appStartText" />
+
+        <TextView
+            android:id="@+id/appStartTimeTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_toRightOf="@+id/appEndText"
+
+            android:textSize="18sp"
+            app:layout_constraintBottom_toBottomOf="@+id/appEndText"
+            app:layout_constraintStart_toStartOf="@+id/appStartTextView"
+            app:layout_constraintTop_toTopOf="@+id/appEndText"
+            app:layout_constraintVertical_bias="1.0" />
+
+        <TextView
+            android:id="@+id/reasonText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:text="Reason:"
+            android:textSize="18sp"
+            app:layout_constraintStart_toStartOf="@+id/guideline"
+            app:layout_constraintTop_toBottomOf="@+id/appEndText" />
+
+        <TextView
+            android:id="@+id/reasonTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:textSize="18sp"
+            app:layout_constraintBottom_toBottomOf="@+id/reasonText"
+            app:layout_constraintStart_toStartOf="@+id/appStartTimeTextView"
+            app:layout_constraintTop_toTopOf="@+id/reasonText" />
+
+        <TextView
+            android:id="@+id/patientNameText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:text="Patient Name:"
+            android:textSize="18sp"
+            app:layout_constraintStart_toStartOf="@+id/guideline"
+            app:layout_constraintTop_toBottomOf="@+id/reasonText" />
+
+        <TextView
+            android:id="@+id/patientNameTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:textSize="18sp"
+            app:layout_constraintBottom_toBottomOf="@+id/patientNameText"
+            app:layout_constraintStart_toStartOf="@+id/reasonTextView"
+            app:layout_constraintTop_toTopOf="@+id/patientNameText" />
+
+        <android.support.constraint.Guideline
+            android:id="@+id/guideline"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_begin="32dp" />
+
+
+    </android.support.constraint.ConstraintLayout>
+
+</LinearLayout>

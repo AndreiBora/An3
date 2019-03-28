@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:paddingBottom="5dp"
+    android:paddingTop="5dp">
+
+    <android.support.v7.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardCornerRadius="5dp"
+        app:contentPadding="2dp">
+
+        <android.support.constraint.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingBottom="10dp">
+
+            <TextView
+                android:id="@+id/appStartText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="16dp"
+                android:text="Date:"
+                app:layout_constraintStart_toStartOf="@+id/guideline"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/appStartTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="70dp"
+                android:layout_toRightOf="@+id/appStartText"
+
+                app:layout_constraintBottom_toBottomOf="@+id/appStartText"
+                app:layout_constraintStart_toEndOf="@+id/appStartText"
+                app:layout_constraintTop_toTopOf="@+id/appStartText"
+                app:layout_constraintVertical_bias="1.0" />
+
+            <TextView
+                android:id="@+id/appEndText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:text="Start time:"
+                app:layout_constraintStart_toStartOf="@+id/guideline"
+                app:layout_constraintTop_toBottomOf="@+id/appStartText" />
+
+            <TextView
+                android:id="@+id/untilTxtV"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:text="End Time:"
+                app:layout_constraintStart_toStartOf="@+id/guideline"
+                app:layout_constraintTop_toBottomOf="@+id/appEndText" />
+
+            <TextView
+                android:id="@+id/appStartTimeTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:layout_toRightOf="@+id/appEndText"
+
+                app:layout_constraintBottom_toBottomOf="@+id/appEndText"
+                app:layout_constraintStart_toStartOf="@+id/appStartTextView"
+                app:layout_constraintTop_toTopOf="@+id/appEndText"
+                app:layout_constraintVertical_bias="1.0" />
+
+            <TextView
+                android:id="@+id/reasonText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:text="Reason:"
+                app:layout_constraintStart_toStartOf="@+id/guideline"
+                app:layout_constraintTop_toBottomOf="@+id/untilTxtV" />
+
+            <TextView
+                android:id="@+id/reasonTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                app:layout_constraintBottom_toBottomOf="@+id/reasonText"
+                app:layout_constraintStart_toStartOf="@+id/endTimeTextV"
+                app:layout_constraintTop_toTopOf="@+id/reasonText" />
+
+            <TextView
+                android:id="@+id/patientNameText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:text="Patient Name:"
+                app:layout_constraintStart_toStartOf="@+id/guideline"
+                app:layout_constraintTop_toBottomOf="@+id/reasonText" />
+
+            <TextView
+                android:id="@+id/patientNameTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                app:layout_constraintBottom_toBottomOf="@+id/patientNameText"
+                app:layout_constraintStart_toStartOf="@+id/reasonTextView"
+                app:layout_constraintTop_toTopOf="@+id/patientNameText" />
+
+            <android.support.constraint.Guideline
+                android:id="@+id/guideline"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_begin="32dp" />
+
+            <ImageView
+                android:id="@+id/deleteAppView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="16dp"
+                app:layout_constraintEnd_toStartOf="@+id/guideline3"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@android:drawable/ic_delete" />
+
+            <ImageView
+                android:id="@+id/editAppView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="16dp"
+                app:layout_constraintEnd_toStartOf="@+id/guideline3"
+                app:layout_constraintTop_toBottomOf="@+id/deleteAppView"
+                app:srcCompat="@android:drawable/ic_menu_edit" />
+
+            <android.support.constraint.Guideline
+                android:id="@+id/guideline3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_begin="367dp" />
+
+            <TextView
+                android:id="@+id/endTimeTextV"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintBottom_toBottomOf="@+id/untilTxtV"
+                app:layout_constraintStart_toStartOf="@+id/appStartTimeTextView"
+                app:layout_constraintTop_toTopOf="@+id/untilTxtV" />
+
+        </android.support.constraint.ConstraintLayout>
+
+
+    </android.support.v7.widget.CardView>
+</LinearLayout>
